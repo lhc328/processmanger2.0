@@ -23,6 +23,7 @@ public class ButtonBar {
     public static ProcessCal processCal = null;
     public static boolean sstop = false;
     public static boolean runflag = false;
+    public static ArrayList<PCB> data = new ArrayList<PCB>();
     public static HBox initBar() {
         HBox bar = new HBox();
         bar.setPadding(new Insets(30, 80, 30, 80));  //上左下右
@@ -63,6 +64,7 @@ public class ButtonBar {
         Button btStop = new Button("暂停");
         btStop.setOnAction((e) -> {
             sstop = true;
+            runflag=false;
         });
 
         Button btRun = new Button("开始运行");
@@ -73,6 +75,8 @@ public class ButtonBar {
                 System.out.println("已经运行了");
             } else {
                 runflag=true;
+                sstop=false;
+                ProcessCal.sign = false;
                 Thread thread = new Thread(processCal);
                 thread.start();
                 GetPCB getpcb = new GetPCB();

@@ -19,16 +19,16 @@ import util.ProcessCal;
  * @author kOX
  */
 public class GetPCB extends Thread {
-    ArrayList<PCB> data = new ArrayList<PCB>();
+    
     @Override
     public void run() {
        
         while(!ButtonBar.sstop){
             if (ProcessCal.sign) {
                 PCB entry = new PCB(ProcessCal.currentPcb);
-                data.add(entry);
+                ButtonBar.data.add(entry);
                 
-                ProcessMan.view.setItems(FXCollections.observableArrayList(data));
+                ProcessMan.view.setItems(FXCollections.observableArrayList(ButtonBar.data));
                 ProcessMan.view.refresh();
                 ProcessCal.sign = false;
                 ProcessMan.tv.refresh();
