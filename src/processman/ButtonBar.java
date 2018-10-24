@@ -63,7 +63,8 @@ public class ButtonBar {
 
         Button btStop = new Button("暂停");
         btStop.setOnAction((e) -> {
-            sstop = true;
+//            sstop = true;
+            ProcessCal.sign = true;
             runflag=false;
         });
 
@@ -75,12 +76,12 @@ public class ButtonBar {
                 System.out.println("已经运行了");
             } else {
                 runflag=true;
-                sstop=false;
+//                sstop=false;
                 ProcessCal.sign = false;
                 Thread thread = new Thread(processCal);
                 thread.start();
-                GetPCB getpcb = new GetPCB();
-                getpcb.start();
+//                GetPCB getpcb = new GetPCB();
+//                getpcb.start();
             }
         });
 

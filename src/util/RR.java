@@ -6,6 +6,8 @@
 package util;
 
 import bean.PCB;
+import processman.GetPCB;
+import processman.ProcessMan;
 
 /**
  *
@@ -19,7 +21,7 @@ public class RR extends ProcessCal {
         while (!super.sign) {
             if (super.relist.isEmpty()) {
                 currentPcb = new PCB(0, 3, 0, 0, 0);
-                super.sign = true;
+                GetPCB.run();
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
@@ -29,7 +31,7 @@ public class RR extends ProcessCal {
                 currentPcb = relist.remove(0);
                 if (currentPcb.getTime() <= slicetime) {
                     currentPcb.setStatus("运行");
-                    super.sign = true;
+                    GetPCB.run();
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {
@@ -40,7 +42,7 @@ public class RR extends ProcessCal {
                     maxPcb++;
                 } else {
                     currentPcb.setStatus("运行");
-                    super.sign = true;
+                    GetPCB.run();
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {
@@ -51,6 +53,7 @@ public class RR extends ProcessCal {
                     relist.add(currentPcb);
                 }
             }
+            ProcessMan.tv.refresh();
         }
     }
 }

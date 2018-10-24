@@ -6,39 +6,32 @@
 package processman;
 
 import bean.PCB;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
-import javafx.scene.control.TableView;
-import static processman.ProcessMan.table;
 import util.ProcessCal;
 
 /**
  *
  * @author kOX
  */
-public class GetPCB extends Thread {
+public class GetPCB {
     
-    @Override
-    public void run() {
+    public static void run() {
        
-        while(!ButtonBar.sstop){
-            if (ProcessCal.sign) {
+//        while(!ButtonBar.sstop){
+//            if (ProcessCal.sign) {
                 PCB entry = new PCB(ProcessCal.currentPcb);
-                ButtonBar.data.add(entry);
-                
+                ButtonBar.data.add(entry);  
                 ProcessMan.view.setItems(FXCollections.observableArrayList(ButtonBar.data));
                 ProcessMan.view.refresh();
-                ProcessCal.sign = false;
+//                ProcessCal.sign = false;
                 ProcessMan.tv.refresh();
-            }
-            try {
-                Thread.sleep(100);
-                //System.out.println("ButtonBar.sstop");
-            } catch (InterruptedException ex) {
-                Logger.getLogger(GetPCB.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+//            }
+//            try {
+//                Thread.sleep(100);
+//                //System.out.println("ButtonBar.sstop");
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(GetPCB.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }
 }
