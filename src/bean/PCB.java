@@ -21,7 +21,7 @@ public class PCB {
     public PCB(){
         this.name = ++ProcessCal.minx;
         this.status = "就绪";
-        this.priority = (int)(Math.random()*3);
+        this.priority = (int)(Math.random()*7);
         this.time = (int)(Math.random()*9+1);
         this.starttime = 0; //(int)(Math.random()*9);
     }

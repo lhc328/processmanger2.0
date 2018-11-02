@@ -22,10 +22,10 @@ import javafx.stage.Stage;
  */
 public class ProcessMan extends Application {
     
-    public static LogTableView table;
-    public static TableView view;
+    public static LogTableView table;   
+    public static TableView view;         //log视图
     public static PCBTableView tt;
-    public static TableView tv;
+    public static TableView tv;             //线程视图
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("单处理调度系统v2.0");
@@ -35,8 +35,8 @@ public class ProcessMan extends Application {
 
 
         /////这里新建类吧
-        table = new LogTableView();
-        view = table.addTableView();
+        table = new LogTableView();            
+        view = table.addTableView();    
         
         tt = new PCBTableView();
         tv = tt.addTableView();

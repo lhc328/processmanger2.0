@@ -12,6 +12,7 @@ import processman.ProcessMan;
 /**
  *
  * @author kOX
+ * 时间片轮转
  */
 public class RR extends ProcessCal {
 
@@ -29,9 +30,9 @@ public class RR extends ProcessCal {
                 }
             } else {
                 currentPcb = relist.remove(0);
+                currentPcb.setStatus("运行");
+                GetPCB.run();
                 if (currentPcb.getTime() <= slicetime) {
-                    currentPcb.setStatus("运行");
-                    GetPCB.run();
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {
@@ -41,8 +42,6 @@ public class RR extends ProcessCal {
                     currentPcb.setStatus("结束");
                     maxPcb++;
                 } else {
-                    currentPcb.setStatus("运行");
-                    GetPCB.run();
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {

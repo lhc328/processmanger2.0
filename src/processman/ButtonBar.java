@@ -21,7 +21,7 @@ import util.*;
 public class ButtonBar {
 
     public static ProcessCal processCal = null;
-    public static boolean sstop = false;
+    //public static boolean sstop = false;
     public static boolean runflag = false;
     public static ArrayList<PCB> data = new ArrayList<PCB>();
     public static HBox initBar() {
