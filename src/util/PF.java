@@ -65,6 +65,7 @@ public class PF extends ProcessCal {
                     currentPcb.setStatus("就绪");
                     relist.add(currentPcb);
                 }
+                time++;
             }
             ProcessMan.tv.refresh();
             Collections.sort(relist, comparator);

@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import util.ProcessCal;
 
 /**
  *
@@ -55,7 +56,12 @@ public class ProcessMan extends Application {
         dscrollpane.setContent(tv);
 
         HBox buttonBar = ButtonBar.initBar();
-
+        
+        //窗口退出时关闭线程
+        primaryStage.setOnCloseRequest(e -> {
+            ProcessCal.sign=true;
+        });
+        
         ((VBox) scene.getRoot()).getChildren().addAll(menuBar, scrollpane, dscrollpane, buttonBar);
         primaryStage.setScene(scene);
         primaryStage.show();

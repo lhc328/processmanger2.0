@@ -21,23 +21,23 @@ public class PCBTableView {
     
         
         TableColumn nameCol = new TableColumn("process-name");
-        nameCol.setMinWidth(50);
+        nameCol.setMinWidth(120);
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         
         TableColumn statusCol = new TableColumn("status");
-        statusCol.setMinWidth(50);
+        statusCol.setMinWidth(60);
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         
         TableColumn prCol = new TableColumn("priority");
-        prCol.setMinWidth(50);
+        prCol.setMinWidth(70);
         prCol.setCellValueFactory(new PropertyValueFactory<>("priority"));
         
         TableColumn etimeCol = new TableColumn("time");
-        etimeCol.setMinWidth(50);
+        etimeCol.setMinWidth(60);
         etimeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
         
         TableColumn stimeCol = new TableColumn("start-name");
-        stimeCol.setMinWidth(50);
+        stimeCol.setMinWidth(80);
         stimeCol.setCellValueFactory(new PropertyValueFactory<>("starttime"));
         
         

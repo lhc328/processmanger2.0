@@ -65,6 +65,7 @@ public class SRT extends ProcessCal {
                     currentPcb.setStatus("就绪");
                     relist.add(currentPcb);
                 }
+                time++;
             }
             Collections.sort(relist, comparator);
             ProcessMan.tv.refresh();

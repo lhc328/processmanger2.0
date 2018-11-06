@@ -18,7 +18,7 @@ public class RR extends ProcessCal {
 
     @Override
     public void run() {
-        int slicetime = time;
+        int slicetime = 1;
         while (!super.sign) {
             if (super.relist.isEmpty()) {
                 currentPcb = new PCB(0, 3, 0, 0, 0);
@@ -51,6 +51,7 @@ public class RR extends ProcessCal {
                     currentPcb.setStatus("就绪");
                     relist.add(currentPcb);
                 }
+                time++;
             }
             ProcessMan.tv.refresh();
         }

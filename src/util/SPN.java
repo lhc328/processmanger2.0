@@ -15,12 +15,12 @@ import processman.ProcessMan;
 
 /**
  *
- * @author kOX
- * 最短进程优先
+ * @author kOX 最短进程优先
  */
-public class SPN extends ProcessCal{
+public class SPN extends ProcessCal {
+
     @Override
-    public void run(){
+    public void run() {
         Comparator<PCB> comparator = new Comparator<PCB>() {
             public int compare(PCB p1, PCB p2) {
                 if (p1.getTime() != p2.getTime()) {
@@ -33,29 +33,42 @@ public class SPN extends ProcessCal{
 
         Collections.sort(relist, comparator);
         while (!super.sign) {
-            if(relist.isEmpty()){
-                currentPcb = new PCB(0,3,0,0,0);
+            if (relist.isEmpty() && reflag) {
+                currentPcb = new PCB(0, 3, 0, 0, 0);
                 GetPCB.run();
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
-            }else{
-                currentPcb = relist.remove(0);
-                currentPcb.setStatus("运行");
-                GetPCB.run();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(SPN.class.getName()).log(Level.SEVERE, null, ex);
+            } else {
+                if(reflag){
+                    currentPcb = relist.remove(0);
                 }
+                while (currentPcb.getTime() > 0 && !super.sign) {
+                    currentPcb.setStatus("运行");
+                    GetPCB.run();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(SPN.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    time++;
+                    currentPcb.setTime(currentPcb.getTime() - 1);
+                    currentPcb.setStatus("就绪");
+                    ProcessMan.tv.refresh();
+                }
+            }                               //有到达新进程，就要重新排序
+            if (currentPcb.getTime() > 0) {
+                reflag = false;
+            } else {
+                reflag = true;
                 currentPcb.setTime(0);
                 currentPcb.setStatus("结束");
                 maxPcb++;
-            }                               //有到达新进程，就要重新排序
-            Collections.sort(relist, comparator);
-            ProcessMan.tv.refresh();
+                Collections.sort(relist, comparator);
+                ProcessMan.tv.refresh();
+            }
         }
     }
 }

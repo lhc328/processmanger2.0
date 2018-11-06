@@ -24,7 +24,7 @@ public class LogTableView {
 //        timeCol.setCellValueFactory(new PropertyValueFactory<>("runtime"));
         
         TableColumn nameCol = new TableColumn("process-name");
-        nameCol.setMinWidth(100);
+        nameCol.setMinWidth(130);
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         
 //        TableColumn statusCol = new TableColumn("status");
@@ -32,15 +32,15 @@ public class LogTableView {
 //        statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         
         TableColumn prCol = new TableColumn("priority");
-        prCol.setMinWidth(55);
+        prCol.setMinWidth(120);
         prCol.setCellValueFactory(new PropertyValueFactory<>("priority"));
         
         TableColumn startCol = new TableColumn("s-time");
-        startCol.setMinWidth(90);
+        startCol.setMinWidth(120);
         startCol.setCellValueFactory(new PropertyValueFactory<>("starttime"));
         
         TableColumn endCol = new TableColumn("r-time");
-        endCol.setMinWidth(80);
+        endCol.setMinWidth(120);
         endCol.setCellValueFactory(new PropertyValueFactory<>("time"));
         
         
